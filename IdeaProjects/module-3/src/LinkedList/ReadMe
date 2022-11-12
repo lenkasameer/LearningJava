@@ -1,0 +1,16 @@
+A LinkedList is another data structure in Java that works like ArrayList, with similar methods
+and functionalities.
+
+
+
+However, there is a difference in the structure. The elements are not stored in contiguous memory
+locations. This affects programs from a performance perspective, i.e. even though the outputs of all the operations are the same, the speeds are different.
+
+
+
+For the time being, let’s focus on just the operations of both ArrayList and LinkedList.
+
+
+All the three methods—add, remove, and contains—work the same way in a LinkedList.
+Now, let’s look at another method to access an element from a list using its index.
+

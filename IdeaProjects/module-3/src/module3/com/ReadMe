@@ -1,0 +1,521 @@
+Arrays:
+
+An array is a collection of elements of similar data types,
+which are stored in contiguous memory locations. The length of an array is fixed,
+and you can store only a fixed set of elements in a Java array.
+
+The first index of an array is 0.
+
+
+
+Advantages of a Java array -----
+
+It is simple to create.
+
+It is easy to access the elements within a Java array.
+
+Disadvantages of a Java array -----
+
+Only a fixed number of elements can be stored in a Java array, and the length of the array
+cannot be increased or decreased. Therefore you cannot insert or delete elements.
+
+
+
+
+Which of the following commands will be used to declare and initialise an integer-type array, ‘random’, of size 5?
+
+int random[ ] = new int[5];
+
+Feedback:
+The format for declaring and initialising an array is ‘data_type <array_name>[] = new <data_type>[data_size]’.
+Here, the data type is int and the array’s name is ‘random’. So, option D is the correct statement.
+This is equivalent to creating a new array object random[ ], of the int class.
+
+
+Whenever you create a new array, such as random, you also create a new array object.
+And depending on the data type of that array object, you can store either an int, double, string,
+or any primitive data type/object in the array. Also, you can declare any variable as an array in
+both the ways mentioned below:
+
+
+
+int random[ ]
+int[ ] random
+
+
+Suppose you are initialising an array as:
+
+int a[], b;
+int[] c, d;
+For such a variable declaration,
+
+a, c, and d are arrays.
+
+Feedback:
+If you mention [ ] with the data type only (for example, int[ ]), this means all the variables
+declared with it are arrays. Hence, both c and d are arrays. If you mention only the data type
+(for example, int), this means you can declare both the arrays and non-arrays together, by using the [ ] symbol with the arrays. Hence, a is also an array.
+
+
+Accessing an Element in an Array
+The following code segment stores a set of six numbers in an array named ‘arr’.
+
+int arr[] = {2, 4, 5, 10, 42, 76};
+Which of the following statements will help you access only the first element of this array?
+
+ans -   arr[0];
+
+
+How to declare an array of different data types ?
+
+You can always create such an array of different data types by declaring the type of the array
+as ‘Object’. Then, you can store objects of different data types in this Object array, since all the objects in Java extend the ‘Object’ class. And through polymorphism, any object will also belong to the Object class, in addition to the class(es) that it belongs to.
+To know more about how to do this, click the link given below this question.
+
+
+public class Arrays {
+    public static void main (String[] args){
+        Object[] arr = {1,2,3,4,'1',"abc"};
+        for (Object s:arr){
+            System.out.println(s.getClass());
+        }
+
+    }
+}
+
+output -
+
+class java.lang.Integer
+class java.lang.Integer
+class java.lang.Integer
+class java.lang.Integer
+class java.lang.Character
+class java.lang.String
+
+
+---------------------------------------------
+The ArrayList class is a resizable array, which can be found in the java.util package.
+
+The difference between a built-in array and an ArrayList in Java,
+is that the size of an array cannot be modified (if you want to add or remove elements to/from an array, you have to create a new one). While elements can be added and removed from an
+ ArrayList whenever you want. The syntax is also slightly different:
+
+ Example -
+
+ Create an ArrayList object called cars that will store strings:
+
+ import java.util.ArrayList; // import the ArrayList class
+
+ ArrayList<String> cars = new ArrayList<String>(); // Create an ArrayList object
+
+
+
+
+
+
+A Java ArrayList is very similar to an array, with the facility to add or remove elements
+dynamically during run-time. That’s why ArrayList is also referred to as a dynamic array.
+It is used to store a group of elements, where storing duplicates is allowed.
+
+
+
+In the ArrayList you learnt about so far, all the elements are of the data type Object,
+which basically needs to be typecast to be accessible.
+
+
+
+Various operations on the ArrayList class, such as accessing elements, adding elements at
+ different positions, removing elements, and searching for an element, are covered in the
+ next few segments. For now, let’s just focus on the most basic operation — adding a new element
+ to ArrayList.
+
+
+ Explain the significance of line 1 in the code segment given below.
+
+ for(Object o : students) {
+       Student s = (Student)o;                    //line 1
+       System.out.println(s.getDetails());
+ }
+
+
+ Explanation -
+ Since the ArrayList class can contain the elements of any data type,
+ you can refer to its type as ‘Object’. Whenever you create the ArrayList of the
+ Object data type, you need to typecast its elements to access them or use them to
+ call methods. Now, all the elements of the ‘students’ ArrayList are of the type Object.
+ You cannot access the getDetails( ) method of the Student class from ‘o’ since it is of the
+ type Object. So, the type of the object o has to be typecast to Student to access
+ the getDetails( ) method. That’s why line 1 is written, to typecast o into s,
+ which is of the Student type. Then, you can access the method using s.getDetails( ).
+
+ --------------------------------------------------------------------------------------------
+ Type Safety
+ A type-safe program is one that doesn’t (or can’t) encounter a run-time error.
+ So, how can you make your program type-safe?
+
+ By converting a potential run-time error into a compile time error.
+ Compile time errors are always preferred over run-time errors because
+ they are easier to identify and fix. So, you can make your program type-safe
+ by converting potential run-time errors into compile time errors.
+
+
+
+
+
+ -----------------------------------------------------------------------------------------------
+ You created an ArrayList containing three objects of the Student type.
+ Then, you added a new Student object to it. But what would happen if you added
+ a new object of any other type (for example, a String or Professor type) to the same ArrayList?
+
+Now, as most of you would be wondering - How could a single ArrayList store both String as well Student data type?
+
+
+
+In order to understand this concept, it is important to revise an important concept of inheritance which is as follows:
+
+
+
+You can store an object of a child class into a variable defined by parent class type. For example, if there are two classes named 'Cat' and 'Dog' which inherit the parent class 'Pet', then an object of 'Cat' class can be stored in a variable of type 'Pet'.
+
+//All the following statements hold true for the above-mentioned case-study
+Pet ob1 = new Cat();
+Pet ob2 = new Dog();
+
+
+An ArrayList stores data of type Object which is the parent class of all Java classes by default.
+
+In most cases, you should create an ArrayList of the same data type (like the Student ArrayList in
+our example). However, you may encounter run-time errors if you accidentally store an element that
+ cannot be cast (like the String → Student example you saw above).
+
+
+
+To deal with this, we need put a constraint of class type to ArrayList as ArrayList<class name>.
+
+so we can have the code as -
+
+import java.util.*;
+
+public class WithArrayList2 {
+
+    public static void main (String[] args) {
+        ArrayList studentList = new ArrayList();
+        studentList.add(new Student("Sujit", 1));
+        studentList.add(new Student("Siddharth", 2));
+        studentList.add(new Student("Karanpreet", 3));
+
+        studentList.add(new Student("Tricha", 4));
+        printStudentList(studentList);
+    }
+
+    public static void printStudentList(ArrayList students) {
+        for(Object o : students) {      // the students arraylist contains objects, so we take variable o of type Object for iterating through arraylist students.
+            Student s = (Student) o;  // now we create a object s of  Student and typecast variable o to Student object type.
+            System.out.println(s.getDetails());
+        }
+    }
+}
+
+class Student {
+    private final String name;
+    private final int rollNumber;
+
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    public String getDetails() {
+        return
+                "name = " + this.name + '\n' +
+                        "roll number = " + this.rollNumber + '\n';
+    }
+}
+
+
+to ----------------------------------
+
+
+import java.util.*;
+
+public class WithArrayList2 {
+
+    public static void main (String[] args) {
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        studentList.add(new Student("Sujit", 1));
+        studentList.add(new Student("Siddharth", 2));
+        studentList.add(new Student("Karanpreet", 3));
+
+        studentList.add(new Student("Tricha", 4));
+        printStudentList(studentList);
+    }
+
+    public static void printStudentList(ArrayList<Student> students) {
+        for(Student s : students) {
+         System.out.println(s.getDetails());
+        }
+    }
+}
+
+class Student {
+    private final String name;
+    private final int rollNumber;
+
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    public String getDetails() {
+        return
+                "name = " + this.name + '\n' +
+                        "roll number = " + this.rollNumber + '\n';
+    }
+}
+
+
+-----------------------------------------------------------------------------------------
+
+defining ArrayLists using generics ensures that only a data of a particular data type can be stored in the ArrayList. For example, consider the following two lines of code.
+
+ArrayList<String> names = new ArrayList<String>();
+ArrayList<Student> studentList = new ArrayList<Student>();
+
+
+
+
+In the 'names' ArrayList, only data of type 'String' can be stored. Similarly, in the 'studentList'
+ArrayList, only data of 'Student' type can be stored. This special ArrayList, where you cannot add elements of different data types, is referred to as an ArrayList using Generics. If you try to add elements of any other data type, this will give you a compile-time error. Following are some of the advantages of using Generics.
+
+The ArrayList can only hold a specific data type and the elements of other data types are not allowed.
+
+Typecasting is not required.
+
+There is a conversion of potential run-time errors into compile-time errors.
+
+
+
+Format to Declare ArrayList Using Generics
+
+The class ArrayList can be declared using generics in the method shown below:
+
+ArrayList<datatype> listName = new ArrayList<datatype>();
+
+
+Here, the data type to be mentioned is always non-primitive (reference).
+For example, Student, String, etc., which are declared as classes. Primitive
+data types such as int, char, and double cannot be used here. If you want to store
+primitive data types in ArrayList classes, you’ll need to use their Object cousins,
+such as Integer, Double, Float, and Boolean.
+
+
+Which of the following declarations would be used to create an ArrayList that accepts only integer values?
+
+
+ArrayList<String> myList = new ArrayList<String>() ;
+
+ArrayList<int> myList = new ArrayList<int>() ;
+
+ArrayList<Integer> myList = new ArrayList<Integer>() ;
+✓ Correct
+Feedback:
+ArrayList do not accept parameters of primitive data types such as int, float, or char.
+They only accept parameters of the reference type, such as Integer or String. Integer is a
+predefined class in Java and is different from the primitive data type int. But all the objects
+of the Integer class have the same behaviour as that of an int-type variable.
+
+So  if you need to create the Generics ArrayList with elements of the following data types, you can use the following formats:
+
+
+
+   1. ArrayList of int-type values —
+
+   ArrayList<Integer> list = new ArrayList<Integer>();
+
+
+   2. ArrayList of double-type values —
+
+   ArrayList<Double> list = new ArrayList<Double>();
+
+
+   3. ArrayList of float-type values —
+
+   ArrayList<Float> list = new ArrayList<Float>();
+
+   Adding to ArrayList ------------------------
+
+   The following methods, predefined in the ArrayList class, will help you add elements to it:
+
+   1 - add(Object o): This appends the specified object ‘o’ to the end of ArrayList.
+        Its return type is Boolean, which returns TRUE when the element is added to the list.
+
+   2 - add(int index, Object o): This inserts the specified object into the specified position in
+       ArrayList.
+
+
+   Remove element from the ArrayList -----
+
+   the remove() method which is used to remove an element from ArrayList, at the specified index.
+
+    ArrayList<Student> studentList = new ArrayList<Student>();
+       studentList.add(new Student("Sujit", 1));
+       studentList.add(new Student("Siddharth", 2));
+       studentList.add(new Student("Karanpreet", 3));
+       studentList.add(new Student("Hari", 5));
+       studentList.add(new Student("Tricha", 4));
+
+       studentList.remove(3);
+
+
+
+   However, what if we want to delete all the elements of the list? For this operation, the ArrayList class provides clear() method. This method can be used to delete/remove all the elements from the list. Following is an example to demonstrate the syntax of this method.
+
+   //The following line of code will erase/delete all the elements of the list
+
+
+   studentList.clear();
+
+
+   Let’s now move to the third operation — searching for an element in ArrayList.
+
+
+   You can search for an element in ArrayList using the following method:
+
+
+
+   contains(Object o): It searches for the element in ArrayList and returns ‘true’
+   if the element is present.
+
+
+The following code segment you have seen in the last question returns ‘false’. Can you rewrite the print statement in the box below so that this code segment returns ‘true’?
+
+ArrayList<Float> random = new ArrayList<Float>();
+random.add(2f);
+random.add(4f);
+random.add(5f);
+random.add(10f);
+random.add(99.9f);
+
+System.out.println(random.contains(5f));
+
+
+Summary ---
+Here’s a quick summary of the topics you learnt about in this session:
+
+Array: An array is a collection of elements of the same data type, stored in a single
+ variable (declared with the [ ] symbol). Arrays are simple to create and enable easy access to
+ elements stored at different positions using index values. But they have fixed lengths and
+  can store only fixed sets of elements.
+
+ArrayList: A Java ArrayList is very similar to an array, with the facility to add or
+remove elements dynamically during run-time. That’s why ArrayList is also referred to
+ as a dynamic array. It is used to store a group of elements, where storing duplicates is allowed.
+ Elements are stored in contiguous positions in an ArrayList and you can easily access,
+ add or remove elements from an ArrayList.
+
+
+ In reality, List is an interface that is implemented by the ArrayList and LinkedList classes. This is the reason why you can instantiate both 'ArrayList' and 'LinkedList' by declaring the type of variable as List.
+
+
+ Refer to the diagram below to understand how all these classes and interfaces are linked to a larger interface named Collection.
+
+ 1- The List interface extends the Collection interface, or List is the child interface of Collection.
+
+ 2- AbstractList implements the List interface, which is further extended by the ArrayList and LinkedList classes. Or, the ArrayList and LinkedList classes are implementations of the List interface.
+
+ 3- The AbstractList class is extended by the ArrayList and LinkedList classes. Or in other words, ArrayList and LinkedList are the subclasses of the Abstract class.
+
+ListIterator ----
+
+
+ListIterator is one of the four java cursors. It is a java iterator that is used to
+traverse all types of lists including ArrayList, Vector, LinkedList, Stack, etc.
+It is available since Java 1.2. It extends the iterator interface.
+
+Some Important points about ListIterator -----
+It is useful for list implemented classes.
+Available since java 1.2.
+It supports bi-directional traversal. i.e both forward and backward directions.
+It supports all the four CRUD operations(Create, Read, Update, Delete) operations.
+Interesting Fact about ListIterator
+There is no current element in ListIterator. Its cursor always lies between the previous
+and next elements. The previous() will return to the previous elements and the next() will return
+to the next element. Therefore, for a list of n length, there are n+1 possible cursors.
+
+
+Syntax: Declaration ---
+public interface ListIterator<E> extends Iterator<E>
+
+
+Where E represents the generic type i.e any parameter of any type/user-defined object.
+
+Syntax: To get a list Iterator on a list
+
+ListIterator<E> listIterator()
+
+ListIterator is a bi-directional iterator. For this functionality, it has two kinds of methods:
+1. Forward direction iteration
+        hasNext(): This method returns true when the list has more elements to traverse while traversing in the forward direction
+        next(): This method returns the next element of the list and advances the position of the cursor.
+        nextIndex(): This method returns the index of the element that would be returned on calling the next() method.
+
+2. Backward direction iteration
+        hasPrevious(): This method returns true when the list has more elements to traverse while traversing in the reverse direction
+        previous(): This method returns the previous element of the list and shifts the cursor one position backward.
+        previousIndex(): This method returns the index of the element that would be returned on calling the previous() method.
+
+
+Once again, you have a list of integers: {1,2,3}. What will the output of the following code snippet be if this list is passed to the iterate method shown below?
+
+public void iterate (List<Integer> numberList) {
+ListIterator<Integer> it = numberList.listIterator(2);
+System.out.println(it.next());
+}
+
+Ans -
+
+3
+
+When you call the listIterator method without any parameter,
+its cursor is positioned at the start of the list. But when you call the method
+with a parameter, say, ‘n’, with the syntax ‘listIterator(n)’, its cursor moves to
+the start of index ‘n’, i.e. ‘it.next( )’ returns the element at index ‘n’.
+So, calling ‘listIterator(2)’ will return the element at index 2.
+
+
+Where would the cursor point after calling the listIterator method in the following manner?
+
+ListIterator<Student> it = students.listIterator(students.size());
+
+
+After the last element of the list
+
+✓ Correct
+Feedback:
+The ‘students.size()’ argument will return the number of elements in the list.
+When you call the method with a parameter ‘n’, with the syntax ‘listIterator(n)’,
+its cursor moves to the start of index ‘n’. So, after calling ‘listIterator(students.size())’,
+the cursor will move to the start of the index number denoted by ‘students.size()’.
+As the index of the last element of the list would be ‘students.size() - 1’, the cursor would
+be after the last element.
+
+-----------------------------------------------------------------------------------------
+
+Summary
+Here’s a quick summary of the topics you learnt about in this session:
+
+LinkedList: A LinkedList is another data structure in Java that works like ArrayList, with similar methods and functionalities. However, there is a difference in the structure. The elements are not stored in contiguous memory locations.
+
+List: A List is an interface that is implemented by the ArrayList and LinkedList classes. The List interface extends the Collection interface, or List is the child interface of Collection. AbstractList implements the List interface, which is further extended by the ArrayList and LinkedList classes. Or, the ArrayList and LinkedList classes are implementations of the List interface.
+
+ListIterator: Iterator is an interface in Java, which is used to iterate over a collection of objects. You can think of an iterator as a cursor to an element in a collection. You can also use the iterator (or the cursor) to move to the next element in the collection.
+
+ListIterator is a subinterface of the Iterator interface, which is used to iterate over a list. It has a lot more features than the Iterator interface, like traversing the list in any direction etc.
+
+
+
+
+
+
+
+

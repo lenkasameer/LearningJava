@@ -1,0 +1,20 @@
+Two types of Polymorphism
+Let us now see the two different kinds of Polymorphism and understand the basic difference between the two.
+
+
+
+There are two types of polymorphism in Java:
+
+a. Static Polymorphism is also known as Compile Time Polymorphism. This kind of polymorphism implies that which method is to be called is to be decided during compile-time only.
+
+
+
+Recall that Method Overloading is a concept where we use the same method name many times in the same class, but with different arguments. Method Overloading would be an example of Static Polymorphism because in case of overloading, at compile time the compiler knows which method it should link to the call.
+
+
+
+b. Dynamic Polymorphism is also known as Runtime Polymorphism. It is a process in which a call to an overridden method is resolved at runtime.
+
+
+
+Recall that Method Overriding means having two methods with the same arguments, but different implementations. One of them would exist in the parent class, while another method with the same name and arguments can be written in the derived, which is the child class. Method Overriding is an example of Dynamic Polymorphism. In this case, an overridden method is called through the reference variable of a superclass but the determination of the method to be called is based on the object being referred to by the reference variable.

@@ -1,0 +1,195 @@
+Private Access Modifiers -
+Access modifiers are used to restrict the accessibility of methods or variables of a class.
+There are four types of access modifiers —
+1-public
+2-private
+3-protected
+4-default—in Java
+
+**********
+On declaring any variable as private, you cannot read or assign any new value to
+that variable from outside the class in which that attribute is declared.
+It basically restricts the access of that variable from outside the class.
+
+Public********
+When you declare a variable or a method as public in a class,
+it signifies that it can be accessed throughout the class.
+You can access these variables and methods from other classes as well.
+ When a method of a class is declared as public, it can be accessed by creating
+ an object of its class in other classes. If it is a static method,
+ then you can directly access it using className.method() without creating an instance.
+
+
+
+This creates potential issues because other classes can now access
+ these public variables and methods and write code that depends on them.
+  This will reduce your flexibility to change the implementation of these
+  public variables and methods at a later point. This is because it will affect
+  other classes that depend on these public variables and methods.
+
+
+ Private ******
+
+ When you declare a variable as private in a class, it signifies that it can be accessed
+ throughout the class but not outside of it. You can’t access it from another class.
+ When a method is declared private, it cannot be accessed by creating an object outside the class.
+ It is restricted only to the class that contains it.
+
+ Getter methods are used to access private variables from outside the class in which
+ they are declared. The standard way in which a private variable
+ can be declared along with its getter method is as follows:
+
+ class Demo {
+    private int var = 5;      //assigning a value to the private int variable
+
+    public int getVar() {
+        return var;
+    }
+ }
+
+ After the previous code, you can access the value assigned to this variable from outside the class.
+  You can do this by calling the getVar( ) method from outside the class in the following manner:
+
+ public class ClassesAndObjects {
+    public static void main(String[] args) {
+
+           Demo d = new Demo();
+
+           d.getVar();        //calling getVar method to access its value
+    }
+
+
+*** Setter Method ****
+
+Setter methods are used to set a new value to private variables, or modify their values from outside the class in which they are declared. The standard way in which a private variable can be declared along with its setter method is as follows:
+
+class Demo {
+   private int var;      //just declaring a private int variable
+
+   public void setVar(int var) {
+       this.var = var;
+   }
+}
+
+
+
+
+After the previous code, you can assign a new value to this variable from outside the class by calling the setVar( ) method from outside the class in the following manner:
+
+public class ClassesAndObjects {
+   public static void main(String[] args) {
+          Demo d = new Demo();
+
+          d.setVar(5);        //calling setVar method to modify its value
+   }
+}
+
+
+Constructs and Setter Methods *******************************
+
+Now if you remember parameterised constructors from the previous session,
+you will know that they are also used for the purpose of initialising the instance
+variables while creating a new object.
+So, what would be the major difference between a setter method and a constructor?
+
+Always remember the following points in the context of setter methods and constructors:
+
+1.Constructors are automatically called as soon as the object is being created, whereas
+setter methods can be called after the object is created, for example, when you want to
+set/modify the value of any instance variable.
+
+
+2.Name of a constructor is always the same as the name of the class.
+
+
+3.No return type (void, int, String, etc) is mentioned in the case of constructors.
+
+
+4.Different constraints for the values of variables can be added to the
+setter methods. You can also call the setter method from the constructor
+if you want to place constraints on the values of the instance variables of
+the class while creating a new object. This can be done in the following way:
+
+class Demo {
+   private int var;         //just declaring a private int variable
+
+public Demo(int var) {       //declaring parameterised setter method
+       setVar(var);
+   }
+
+   public void setVar(int var) {     //declaring setter method
+       this.var = var;
+       if (this.var < 0){                 //adding constraint
+          this.var = 0;
+       }
+   }
+
+
+Note **********
+
+The key takeaway from the section on private methods is:
+If you declare a method of any class as private, you
+can call that method within that class only and there is no way to call it
+from outside that class.
+
+Declaring Constructors as Provate *****************
+
+This member has the same name as the name of the class, hence, it is a constructor.
+If you want to create objects of a class, you can never declare its constructor as private.
+A constructor will always have the same access modifier as that of its “class” keyword.
+Hence, neither public nor private can be used here during the Demo constructor declaration.
+
+Note *************
+
+The key takeaway from this brief section on private constructors is:
+If you make any class constructor private, you cannot create the instance of that
+class from outside the class. You can still create objects within the same class,
+which is a use-case of singleton pattern implementation,
+which will be discussed in the later courses.
+
+
+What is encapsulation?
+
+Encapsulation is a principle based on hiding the state of objects and restricting their access to
+various parts of your program. Encapsulation is achieved with the use of private access modifiers
+and the getter and setter methods.
+
+
+
+How do you create a fully encapsulated class?
+
+Make all the instance variables of a class private.
+
+Only use getter and setter methods to read or write values of the instance variables.
+
+
+
+Advantages of encapsulation: **********************
+
+You can make your class read-only or write-only by declaring only getter or setter methods.
+This prevents other code or malicious code from accessing instance variables in your class that
+ they should not read or modify.
+
+You can add variable logic/constraints in the setter methods, so you have full control of the data
+that can be assigned to the instance variables.
+
+
+
+Both of the above points contribute to the objective of code-safety, which we discussed at the
+start of this session.
+
+
+
+To drive home the entire concept of encapsulation, let’s take the code of the Information
+Management System example we took in the last session and make the Student class a fully
+encapsulated class.
+
+
+Encapsulation -
+The principle of encapsulation is based on hiding the state of objects and restricting
+their access to various parts of your program. The instance variables of a class are hidden
+from any other class and can be accessed only through a member function of the class in which
+they are declared. Since the data of one class is hidden from other classes, encapsulation is
+also known as data hiding.
+It is achieved with the use of private access modifiers and the getter and setter methods.
+

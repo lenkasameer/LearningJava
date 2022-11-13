@@ -1,0 +1,54 @@
+Let's take another example to understand this better.
+
+
+
+Let’s say the class Rectangle extends from a class named ‘Shape’ (Rectangle is a shape, and hence, Shape can act as a superclass for it), and the class Square extends the class Rectangle.
+
+public class Shape{ }
+public class Rectangle extends Shape{ }
+public class Square extends Rectangle{ }
+
+
+Firstly, since the subclass Rectangle inherits from the superclass Shape,
+Rectangle will be able to reuse all the properties of the Shape class.
+Thus, a subclass object can access the properties of a superclass but the vice-versa
+is not true meaning that a superclass object cannot access the properties of a subclass.
+Secondly, since the subclass Square inherits from the Rectangle class,
+the ﻿    Square class will be able to reuse the properties of the Rectangle class.
+In addition, the Square class will also inherit additional attributes from the Shape class
+via the Rectangle class. Thus, a subclass object can access the properties of a
+superclass - no matter whether it's a direct parent or an indirect parent but the vice-versa is
+ not true.
+
+This entire relationship can be depicted in the following diagram:
+
+Figure 1 - Inheriting from Subclasses
+Figure 1 - Inheriting from Subclasses
+
+
+Some reasons to use composition over inheritance are:
+
+One reason for favouring Composition over Inheritance in Java is fact that Java doesn't support multiple inheritance.
+
+Though both Composition and Inheritance allows you to reuse code, one of the disadvantages of Inheritance is that it breaks encapsulation. If the subclass is depending on superclass behaviour for its operation, it suddenly becomes fragile. When the behaviour of superclass changes, functionality in the subclass may get broken, without any change on its part.
+
+Composition offers better test-ability of a class than Inheritance. If one class is composed of another class, you can easily create a Mock Object representing the composed class for sake of testing.
+
+Like, There are many more reasons to favour Composition over inheritance
+
+--------------------------
+
+Keep in mind the following considerations while overriding a method:
+
+The method name, the return type, and the argument list of the overriding method in the subclass should match the method of the superclass.
+
+The access modifier of the method in the subclass cannot be more restrictive than the one in the superclass. This implies that if the method being overridden is declared as public in the superclass, it cannot be declared as private or protected in the subclass.
+
+Methods defined as private, static, or final cannot be overridden.
+
+Whenever a call to the overridden method is made, it is the subclass version of the method that is invoked and not the superclass version. To call the superclass version of the overridden method, use the ‘super’ keyword along with the method name super.methodName();
+
+Can the main method be overridden?
+Any static method cannot be overridden because method overriding is
+decided during runtime but static methods or variables are decided during compile time itself.
+Since the main method is static we can’t override the main method.
